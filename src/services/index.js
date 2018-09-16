@@ -1,10 +1,12 @@
 import "whatwg-fetch";
-import APIKEY from "../config/index";
+import { APIKEY } from "../config/index";
 import convert from "xml-js";
 import { isArrayLike } from "mobx";
 
 const API_ENDPOINT =
   "https://cors-anywhere.herokuapp.com/https://www.goodreads.com";
+
+console.log("APIKEY" + APIKEY);
 
 export async function searchBooks(term) {
   const json = await getJSONResponse(
@@ -59,6 +61,8 @@ function asBook(json) {
 }
 
 async function getJSONResponse(url) {
+  console.log(url);
+
   const results = await fetch(url, {
     headers: { "X-Requested-With": "XMLHttpRequest" }
   });
