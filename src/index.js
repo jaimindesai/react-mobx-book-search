@@ -6,8 +6,13 @@ import { store } from "./store/book-store";
 import DevTools from "mobx-react-devtools";
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <div>
+    <Provider store={store}>
+      <App />
+    </Provider>
+    {process.env.NODE_ENV !== "production" && (
+      <DevTools position={{ bottom: 0, right: 10 }} />
+    )}
+  </div>,
   document.getElementById("root")
 );
